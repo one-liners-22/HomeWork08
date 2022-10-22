@@ -1,5 +1,5 @@
 # import tabulate
-# import tkinter
+from tkinter import *
 from select import select
 
 # def select_action() -> int:
@@ -16,6 +16,48 @@ from select import select
 #     print("9. Закончить работу")
 #     return int(input("Введите номер необходимого действия: "))
 
+# Тестовое окно от 19 до 34 строки (работает)
+# from tkinter import *
+
+# def hello(event):
+#   print("Привет ублюдок!")
+
+# root = Tk()
+# root.title("То самое мать его первое окно")
+# root.geometry("600x500")
+# but1 = Button(root)
+# but1["text"] = "Кнопка для приветствия"
+# but1.bind("<Button-1>",hello)
+
+# but1.pack()
+# root.mainloop()
+# input()
+
+
+root = Tk() #создание главного окна
+value = StringVar()
+root.title("Главное окно") #название главного окна
+root.geometry("600x600+700+300") #где 400 ширина 200 высота, 
+# счёт идёт от верхнего левого угла где 700 отступ слева 300 отступ вниз
+root.resizable(width = False, height = False) #запрет на изминение размера окна
+
+l = Label(text = "Добро пожаловать в тестовую версию окна") #текст
+e = Entry(textvariable = value) # поле ввода
+b = Button(text = "Старт") #кнопка
+def chanche_label():
+    print("hello")
+b.bind('<Button - 1>', chanche_label())
+
+# l.grid(row = 1, column = 1)
+# e.grid(row = 2, column = 1)
+# b.grid(row = 3, column = 1)
+
+
+l.pack(side = BOTTOM)
+e.pack()
+b.pack()
+root.mainloop() #конец tkinter функции
+
 
 def select_action() -> int:
     # print("\n" + "=" * 20)
@@ -30,6 +72,7 @@ def select_action() -> int:
     return int(input("Введите номер необходимого действия: "))
 
 
+
 if select_action() == 1:
     def second_menue():
         print("По какому критерию предпочитаете осуществить поиск сотрудника(ов)")
@@ -38,7 +81,7 @@ if select_action() == 1:
         print("3. Сделать выборку сотрудников по зарплате")
         user_choice = int(input("Введите цифру "))
         return user_choice
-    print(second_menue())
+    # print(second_menue())
 # 1. Найти сотрудника
 
 if second_menue == 1:
@@ -101,7 +144,7 @@ def edit_empl_data():
 
 # 7. Экспортировать данные в формате json/csv
 def export_data_json():
-    print("Выберите формат экспорта файла json/csv: ")
+    # print("Выберите формат экспорта файла json/csv: ")
 
     if export_data_json == 1:
         def data_json():
@@ -112,9 +155,9 @@ def export_data_json():
         def export_data_csv():
             export_data_csv = input("Введите 2 для экспорта формата csv: ")
     else:
-        print("Введены не верные данные, введите 1 или 2")
+        # print("Введены не верные данные, введите 1 или 2")
 
-    export_json = input("Эскпортировать в формат json: ")
+        export_json = input("Эскпортировать в формат json: ")
     return export_json
 # print(export_data_json())
 
