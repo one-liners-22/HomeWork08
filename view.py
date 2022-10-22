@@ -1,4 +1,5 @@
 # import tabulate
+# import tkinter
 from select import select
 
 # def select_action() -> int:
@@ -45,7 +46,7 @@ if second_menue == 1:
         search_empl = input("Введите фамилию сотрудника: ")  # фамилию
 
         return search_empl
-    print(find_empl())
+    # print(find_empl())
 
 
 # 2. Сделать выборку сотрудников по должности
@@ -53,7 +54,7 @@ if second_menue == 2:
     def select_empl_position():
         select_pos = input("Введите искомую позицию: ")
         return select_pos
-    print(select_empl_position())
+    # print(select_empl_position())
 
 
 # 3. Сделать выборку сотрудников по зарплате
@@ -61,12 +62,18 @@ if second_menue == 3:
     def select_empl_salary():
         select_salary = input("Введите зарплату: ")
         return select_salary
-    print(select_empl_salary())
+    # print(select_empl_salary())
 
 
-# 4. Добавить сотрудника
+# 4. Добавить сотрудника, найден похожий сотрудник
 def add_empl():
     add_somebody = input("Добавьте сотрудника: ")
+    archive = {"id": ""}
+    archive["last_name"] = (input("Введите фамилию сотрудника: "))
+    archive["first_name"] = (input("Введите имя сотрудника: "))
+    archive["position"] = (input("Введите должность сотрудника: "))
+    archive["phone_number"] = (input("Введите телефонный номер сотрудника: "))
+    archive["salary"] = (input("Введите зарплату сотрудника: "))
     return add_somebody
 # print(add_empl())
 
@@ -81,22 +88,42 @@ def delete_empl():
 # 6. Обновить данные сотрудника
 def edit_empl_data():
     edit_data = input("Обновите данные сотрудника: ")
+    print("Какие данные вы хотите обновить: ")
+    edit = {"id": ""}
+    edit["last_name"] = (input("Введите фамилию сотрудника: "))
+    edit["first_name"] = (input("Введите имя сотрудника: "))
+    edit["position"] = (input("Введите должность сотрудника: "))
+    edit["phone_number"] = (input("Введите телефонный номер сотрудника: "))
+    edit["salary"] = (input("Введите зарплату сотрудника: "))
     return edit_data
 # print(edit_empl_data())
 
 
-# 7. Экспортировать данные в формате json
+# 7. Экспортировать данные в формате json/csv
 def export_data_json():
+    print("Выберите формат экспорта файла json/csv: ")
+
+    if export_data_json == 1:
+        def data_json():
+            export_data_json = input("Введите 1 для экспорта формата json: ")  
+
+        return export_data_json
+    elif export_data_csv == 2:
+        def export_data_csv():
+            export_data_csv = input("Введите 2 для экспорта формата csv: ")
+    else:
+        print("Введены не верные данные, введите 1 или 2")
+
     export_json = input("Эскпортировать в формат json: ")
     return export_json
 # print(export_data_json())
 
 
-# 8. Экспортировать данные в формате csv
-def export_data_csv():
-    export_csv = input("Экспортировать в csv: ")
-    return export_csv
-# print(export_data_csv())
+# # 8. Экспортировать данные в формате csv
+# def export_data_csv():
+#     export_csv = input("Экспортировать в csv: ")
+#     return export_csv
+# # print(export_data_csv())
 
 
 # 9. Закончить работу
