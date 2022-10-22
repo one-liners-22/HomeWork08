@@ -1,4 +1,9 @@
 # import tabulate
+
+# Для добавления сотрудника и обновления данных о сотруднике при взаимодействии с пользователем создать список-значение
+# Пример:
+# ['Иванов', "Иван Иванович", 'генеральный директор', '111', 1000.0] # Обратите внимание, что все значения - str, а последний - float!
+
 from select import select
 
 # def select_action() -> int:
@@ -42,7 +47,7 @@ if select_action() == 1:
 
 if second_menue == 1:
     def find_empl():
-        search_empl = input("Введите фамилию сотрудника: ")  # фамилию
+        search_empl = input("Введите ФИО сотрудника: ")  
 
         return search_empl
     print(find_empl())
