@@ -20,10 +20,10 @@ from select import select
 # from tkinter import *
 
 # def hello(event):
-#   print("Привет ублюдок!")
+#   print("Привет!")
 
 # root = Tk()
-# root.title("То самое мать его первое окно")
+# root.title("То самое первое окно")
 # root.geometry("600x500")
 # but1 = Button(root)
 # but1["text"] = "Кнопка для приветствия"
