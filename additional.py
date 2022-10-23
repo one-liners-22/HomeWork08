@@ -3,7 +3,7 @@ import view
 import write
 
 # после того как совпадения по запросу пользователя нашлись эти совпадения мы отправляем ему списком, предлагаем ему выбрать из списка одну позицию 
-# и его выбор запоминаем, как одну переменную - 1
+# и его выбор запоминаем, как одну переменную - 1/
 # и обращаемся к элементу списка по новому индексу. переменная, которую нам ввел пользователь, является индексом
 
 data = [{ 'id' : 1, 'last_name': 'Иванов', 'firs_tname': 'Иван Петрович' , 'position': 'генеральный директор', "phone_number": '111', "salary": 1000.0},
@@ -25,7 +25,7 @@ def last_id():
 
 # Найти сотрудника
 def find_what_empl(what_find): #только одно слово - фамилия
-    return [i for i in data if i['last_name'] == what_find]            
+    return [i for i in data if i['last_name'] == what_find]
 print(len(find_what_empl('')))
 
 # Сделать выборку сотрудников по должности
@@ -35,6 +35,11 @@ def select_position(select_pos):
 # Сделать выборку сотрудников по зарплате
 def select_salary_empl(select_salary):
     return[i for i in data if i['salary'] == select_salary]
+
+# Добавление сотрудника без проверки
+def empl_add_data(user_list, data_new):
+    new_empl = dict(zip(key_data, user_list))
+    return data_new.append(new_empl)
 
 # Создание нового сотрудника
 def new_emple_create(user_list, data_new):
@@ -53,7 +58,7 @@ def new_emple_create(user_list, data_new):
             for i in range(len(data_new)):
                 if data_new[i]["id"] == id_new:
                     index = data_new[i] # можно было лы вызвать из view edit_empl_data(), чтоб пользователь ввел новые значения, кроме значения по ключу 'id' 
-                    index = {"id": ""}
+                    # index = {"id": ""}
                     index['last_name'] = input('Введите фамилию')
                     index['first_name'] = input('Введите имя')
                     index['position'] = input('Введите должность')
@@ -65,10 +70,7 @@ def new_emple_create(user_list, data_new):
          empl_add_data(user_list, data_new)
 
 new_emple_create(user_list, data_new)
-# Добавление сотрудника без проверки
-def empl_add_data(user_list, data_new):
-    new_empl = dict(zip(key_data, user_list))
-    return data_new.append(new_empl)
+
 
 # Удалить сотрудника (по тому же принципу)
 def delet_what_empl(del_empl, data):
