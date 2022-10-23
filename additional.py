@@ -6,70 +6,62 @@ import write
 # и его выбор запоминаем, как одну переменную - 1/
 # и обращаемся к элементу списка по новому индексу. переменная, которую нам ввел пользователь, является индексом
 
-data = [{ 'id' : 1, 'last_name': 'Иванов', 'firs_tname': 'Иван Петрович' , 'position': 'генеральный директор', "phone_number": '111', "salary": 1000.0},
-{ 'id' :2, 'last_name': 'Иванова', 'first_name': 'Мария Ивановна', 'position': 'главный бухгалтер', "phone_number": '222', "salary": 999.99},
-{ 'id' :3, 'last_name': 'Иванов', 'first_name': 'Иван Иванович', 'position': 'менеджер', "phone_number": '333', "salary": 888.88},
-{ 'id' :4, 'last_name': 'Петров', 'first_name': 'Петр', 'position': 'работник', "phone_number": '444', "salary": 150.0},
-{ 'id' :5, 'last_name': 'Сидоров', 'first_name': 'Сидор Петрович', 'position': 'сторож', "phone_number": '555', "salary": 250.0},
-{ 'id' :6, 'last_name': 'Шишкин', 'first_name': 'Анатолий', 'position': 'преподаватель', "phone_number": '666', "salary": 1000000.0}]
-data_new = data.copy()
+# data = [{ 'id' : 1, 'last_name': 'Иванов', 'firs_tname': 'Иван Петрович' , 'position': 'генеральный директор', "phone_number": '111', "salary": 1000.0},
+# { 'id' :2, 'last_name': 'Иванова', 'first_name': 'Мария Ивановна', 'position': 'главный бухгалтер', "phone_number": '222', "salary": 999.99},
+# { 'id' :3, 'last_name': 'Иванов', 'first_name': 'Иван Иванович', 'position': 'менеджер', "phone_number": '333', "salary": 888.88},
+# { 'id' :4, 'last_name': 'Петров', 'first_name': 'Петр', 'position': 'работник', "phone_number": '444', "salary": 150.0},
+# { 'id' :5, 'last_name': 'Сидоров', 'first_name': 'Сидор Петрович', 'position': 'сторож', "phone_number": '555', "salary": 250.0},
+# { 'id' :6, 'last_name': 'Шишкин', 'first_name': 'Анатолий', 'position': 'преподаватель', "phone_number": '666', "salary": 1000000.0}]
+# data_new = data.copy()
 what_find = 'Иванов'
 user_string = 'Костылев Кирилл Андревич программист +7325252223 99999999'
 user_list = ['Иванов', "Иван Иванович", 'генеральный директор', '111', 1000.0]
 key_data = ['id', 'last_name', 'firs_tname', 'position', "phone_number", "salary"]
-def last_id():
+def last_id(data):
     id_list = [i["id"] for i in data]
     return max(id_list)
 
 
 
 # Найти сотрудника
-def find_what_empl(what_find): #только одно слово - фамилия
+def find_what_empl(what_find, data): #только одно слово - фамилия
     return [i for i in data if i['last_name'] == what_find]
-print(len(find_what_empl('')))
+
 
 # Сделать выборку сотрудников по должности
-def select_position(select_pos):
+def select_position(select_pos, data):
     return [i for i in data if i['position'] == select_pos]
 
 # Сделать выборку сотрудников по зарплате
-def select_salary_empl(select_salary):
+def select_salary_empl(select_salary, data):
     return[i for i in data if i['salary'] == select_salary]
 
 # Добавление сотрудника без проверки
 def empl_add_data(user_list, data_new):
     new_empl = dict(zip(key_data, user_list))
+    new_empl_with_id  = {"id": last_id(data_new)}
+    new_empl_with_id.update(new_empl)
     return data_new.append(new_empl)
 
 # Создание нового сотрудника
 def new_emple_create(user_list, data_new):
     last_name = user_list[1]
-    new_list = {}
-    if len(find_what_empl(last_name)) != 0:
+
+    if len(find_what_empl(last_name, data_new)) != 0:
         print("Похожий сотрудник есть! ")
-        print(find_what_empl(last_name))
+        print(find_what_empl(last_name, data_new))
         print('Хотите изменить строчку? ') # Логику использовать во view
         user_choose = int(input('Добавить - 1, изменить строчку - 2: '))
+
         if user_choose == 1:
             empl_add_data(user_list, data_new)
         elif user_choose == 2:
             id_new = int(input(("Введите id строки, которую надо изменить: ")))
             index = -1
-            for i in range(len(data_new)):
-                if data_new[i]["id"] == id_new:
-                    index = data_new[i] # можно было лы вызвать из view edit_empl_data(), чтоб пользователь ввел новые значения, кроме значения по ключу 'id' 
-                    # index = {"id": ""}
-                    index['last_name'] = input('Введите фамилию')
-                    index['first_name'] = input('Введите имя')
-                    index['position'] = input('Введите должность')
-                    index['phone_number'] = input('Введите номер телефона')
-                    index['salary'] = int(input('Введите зарплату'))
-                    return index
+
                     
     else:
          empl_add_data(user_list, data_new)
-
-new_emple_create(user_list, data_new)
 
 
 # Удалить сотрудника (по тому же принципу)
