@@ -42,14 +42,14 @@ def select_empl_salary():
 
 
 def add_empl():
-    add_somebody = input("Добавьте сотрудника: ")
+    print("Добавьте сотрудника: ")
     archive = {"id": ""}
     archive["last_name"] = (input("Введите фамилию сотрудника: "))
     archive["first_name"] = (input("Введите имя сотрудника: "))
     archive["position"] = (input("Введите должность сотрудника: "))
     archive["phone_number"] = (input("Введите телефонный номер сотрудника: "))
     archive["salary"] = (input("Введите зарплату сотрудника: "))
-    return add_somebody
+    return archive
 
 
 
