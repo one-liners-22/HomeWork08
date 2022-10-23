@@ -11,19 +11,19 @@ def main_logic():
         pos = view.select_action()
         if pos == 11:
             what_find = view.find_empl()
-            data_to_print = additional.find_what_empl(what_find)
+            data_to_print = additional.find_what_empl(what_find, empl_data)
             view.print_all_contacts(data_to_print)
         if pos == 12:
             what_find = view.select_empl_position()
-            data_to_print = additional.select_position(what_find)
+            data_to_print = additional.select_position(what_find, empl_data)
             view.print_all_contacts(data_to_print)
         if pos == 13:
             what_find = view.select_empl_salary()
-            data_to_print = additional.select_salary_empl(what_find)
+            data_to_print = additional.select_salary_empl(what_find, empl_data)
             view.print_all_contacts(data_to_print)
         if pos == 2:
             what_find = view.add_empl()
-            data_to_print = additional.find_what_empl(what_find['last_name'])
+            data_to_print = additional.find_what_empl(what_find['last_name'], empl_data)
             view.print_all_contacts(data_to_print)
             additional.new_emple_create(list(what_find.values()), empl_data)
             view.print_all_contacts(empl_data)
@@ -39,8 +39,9 @@ def main_logic():
             empl_list = list(view.edit_empl_data().values())
             data_to_print = additional.choose_what_empl(empl_list, empl_data)
             view.print_all_contacts(data_to_print)
-            write.write_json(empl_data)
-            write.write_csv(empl_data)
+            print(data_to_print)
+            write.write_json(data_to_print)
+            write.write_csv(data_to_print)
         if pos == 5:
             what_save = view.export_data()
             if what_save == 1:
