@@ -1,5 +1,4 @@
 from tabulate import tabulate
-from select import select
 
 
 def select_action() -> int:

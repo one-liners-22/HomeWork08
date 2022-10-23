@@ -5,7 +5,7 @@ import write
 
 empl_data = read.read_json()
 def main_logic():
-    # в additional закоментировали 56 строчку. не пушить additional!
+    # в additional закоментировали 56 строчку./ не пушить additional!
     pos = 2
     while 1 < pos < 14:
         pos = view.select_action()
