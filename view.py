@@ -1,4 +1,4 @@
-# import tabulate
+from tabulate import tabulate
 from tkinter import *
 from select import select
 
@@ -34,29 +34,33 @@ from select import select
 # input()
 
 
-root = Tk() #создание главного окна
-value = StringVar()
-root.title("Главное окно") #название главного окна
-root.geometry("600x600+700+300") #где 400 ширина 200 высота, 
-# счёт идёт от верхнего левого угла где 700 отступ слева 300 отступ вниз
-root.resizable(width = False, height = False) #запрет на изминение размера окна
-
-l = Label(text = "Добро пожаловать в тестовую версию окна") #текст
-e = Entry(textvariable = value) # поле ввода
-b = Button(text = "Старт") #кнопка
-def chanche_label():
-    print("hello")
-b.bind('<Button - 1>', chanche_label())
-
-# l.grid(row = 1, column = 1)
-# e.grid(row = 2, column = 1)
-# b.grid(row = 3, column = 1)
-
-
-l.pack(side = BOTTOM)
-e.pack()
-b.pack()
-root.mainloop() #конец tkinter функции
+# root = Tk()  # создание главного окна
+# value = StringVar()
+# root.title("Главное окно")  # название главного окна
+# root.geometry("600x600+700+300")  # где 400 ширина 200 высота,
+# # счёт идёт от верхнего левого угла где 700 отступ слева 300 отступ вниз
+# root.resizable(width=False, height=False)  # запрет на изминение размера окна
+#
+# l = Label(text="Добро пожаловать в тестовую версию окна")  # текст
+# e = Entry(textvariable=value)  # поле ввода
+# b = Button(text="Старт")  # кнопка
+#
+#
+# def chanche_label():
+#     print("hello")
+#
+#
+# b.bind('<Button - 1>', chanche_label())
+#
+# # l.grid(row = 1, column = 1)
+# # e.grid(row = 2, column = 1)
+# # b.grid(row = 3, column = 1)
+#
+#
+# l.pack(side=BOTTOM)
+# e.pack()
+# b.pack()
+# root.mainloop()  # конец tkinter функции
 
 
 def select_action() -> int:
@@ -68,44 +72,41 @@ def select_action() -> int:
     # фамилия+имя, далее должность затем список действий что обновляем по ключу
     print("4. Обновить данные сотрудника")
     print("5. Экспортировать данные ")
-    print("6. Закончить работу")
-    return int(input("Введите номер необходимого действия: "))
+    print("6. Вывести список сотрудников")
+    print("7. Закончить работу")
+    user_choice = int(input("Введите номер необходимого действия: "))
 
-
-
-if select_action() == 1:
-    def second_menue():
+    if user_choice == 1:
         print("По какому критерию предпочитаете осуществить поиск сотрудника(ов)")
         print("1. Найти сотрудника по фамилии")
         print("2. Сделать выборку сотрудников по должности")
         print("3. Сделать выборку сотрудников по зарплате")
-        user_choice = int(input("Введите цифру "))
+        user_choice = int(input("Введите цифру ")) + 10
+        print(user_choice)
+        return user_choice
+    else:
         return user_choice
     # print(second_menue())
+
+
 # 1. Найти сотрудника
+def find_empl():
+    search_empl = input("Введите фамилию сотрудника: ")  # фамилию
 
-if second_menue == 1:
-    def find_empl():
-        search_empl = input("Введите фамилию сотрудника: ")  # фамилию
-
-        return search_empl
-    # print(find_empl())
-
+    return search_empl
+# print(find_empl())
 
 # 2. Сделать выборку сотрудников по должности
-if second_menue == 2:
-    def select_empl_position():
-        select_pos = input("Введите искомую позицию: ")
-        return select_pos
-    # print(select_empl_position())
-
+def select_empl_position():
+    select_pos = input("Введите искомую позицию: ")
+    return select_pos
+# print(select_empl_position())
 
 # 3. Сделать выборку сотрудников по зарплате
-if second_menue == 3:
-    def select_empl_salary():
-        select_salary = input("Введите зарплату: ")
-        return select_salary
-    # print(select_empl_salary())
+def select_empl_salary():
+    select_salary = input("Введите зарплату: ")
+    return select_salary
+# print(select_empl_salary())
 
 
 # 4. Добавить сотрудника, найден похожий сотрудник
@@ -118,47 +119,41 @@ def add_empl():
     archive["phone_number"] = (input("Введите телефонный номер сотрудника: "))
     archive["salary"] = (input("Введите зарплату сотрудника: "))
     return add_somebody
+
+
 # print(add_empl())
 
 
 # 5. Удалить сотрудника
 def delete_empl():
-    del_emp = input("Удалите сотрудника: ")
-    return del_emp
+    del_empl = input("Введите фамилию сотрудника, которого хотите удалить: ")
+    return del_empl
+
+
 # print(delete_empl())
 
 
 # 6. Обновить данные сотрудника
 def edit_empl_data():
-    edit_data = input("Обновите данные сотрудника: ")
-    print("Какие данные вы хотите обновить: ")
+    # edit_data = input("Обновите данные сотрудника: ")
+    print("Введите все данные сотрудника")
     edit = {"id": ""}
     edit["last_name"] = (input("Введите фамилию сотрудника: "))
     edit["first_name"] = (input("Введите имя сотрудника: "))
     edit["position"] = (input("Введите должность сотрудника: "))
     edit["phone_number"] = (input("Введите телефонный номер сотрудника: "))
     edit["salary"] = (input("Введите зарплату сотрудника: "))
-    return edit_data
+    return edit
+
+
 # print(edit_empl_data())
 
 
 # 7. Экспортировать данные в формате json/csv
-def export_data_json():
+def export_data():
     # print("Выберите формат экспорта файла json/csv: ")
+    return int(input("Введите 1 для экспорта в формате json или 2 для экспорта в формате csv: "))
 
-    if export_data_json == 1:
-        def data_json():
-            export_data_json = input("Введите 1 для экспорта формата json: ")  
-
-        return export_data_json
-    elif export_data_csv == 2:
-        def export_data_csv():
-            export_data_csv = input("Введите 2 для экспорта формата csv: ")
-    else:
-        # print("Введены не верные данные, введите 1 или 2")
-
-        export_json = input("Эскпортировать в формат json: ")
-    return export_json
 # print(export_data_json())
 
 
@@ -171,26 +166,23 @@ def export_data_json():
 
 # 9. Закончить работу
 def end_work():
-    end = input("Завершить работу: ")
-    return end
-
+    print("Программа завершена")
 # print(end_work())
 
 
-# def print_all_contacts(data):
-#     data_to_print = []
+def print_all_contacts(data):
+    data_to_print = []
 
-#     for i in range(len(data)):
-#         listik = list(data[i].values())
-#         listik.pop(0)
-#         data_to_print.append(listik)
+    for i in range(len(data)):
+        listik = list(data[i].values())
+        listik.pop(0)
+        data_to_print.append(listik)
 
-#     col_names = ["Фамилия", "Имя Отчество", "Должность", "Телефон", "Зарплата"]
-#     # print(data_to_print)
-#     print(tabulate(data_to_print, headers=col_names,
-#           tablefmt="fancy_grid", showindex="never"))
+    col_names = ["Фамилия", "Имя Отчество", "Должность", "Телефон", "Зарплата"]
+    # print(data_to_print)
+    print(tabulate(data_to_print, headers=col_names, tablefmt="fancy_grid", showindex="never"))
 
-# # #print_all_contacts(data)
+# #print_all_contacts(data)
 
 
 # Функционал
