@@ -31,17 +31,17 @@ def main_logic():
             write.write_csv(empl_data)
         if pos == 3:
             what_find = view.delete_empl()
-            data_to_print = additional.delet_what_empl(what_find)
-            view.print_all_contacts(data_to_print)
+            additional.delet_what_empl(what_find, empl_data)
+            view.print_all_contacts(empl_data)
             write.write_json(empl_data)
             write.write_csv(empl_data)
         if pos == 4:
             empl_list = list(view.edit_empl_data().values())
-            data_to_print = additional.choose_what_empl(empl_list, empl_data)
-            view.print_all_contacts(data_to_print)
-            print(data_to_print)
-            write.write_json(data_to_print)
-            write.write_csv(data_to_print)
+            additional.choose_what_empl(empl_list, empl_data)
+            view.print_all_contacts(empl_data)
+            print(empl_data)
+            write.write_json(empl_data)
+            write.write_csv(empl_data)
         if pos == 5:
             what_save = view.export_data()
             if what_save == 1:
